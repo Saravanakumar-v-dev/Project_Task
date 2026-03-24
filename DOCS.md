@@ -419,9 +419,8 @@ npm run preview
 
 ---
 
-## Explanation Write-Up
+## Explanation 
 
-*(150–250 words for the submission explanation field)*
 
 **Hardest UI problem solved:** The custom drag-and-drop system without any library was the most challenging part. The core difficulty wasn't making a card follow the cursor — it was making `document.elementFromPoint()` work correctly while a ghost element was under the pointer. The ghost had to be temporarily hidden (`display: none`) for each `pointermove` event to detect the column underneath, then immediately shown again. Getting this hide-detect-show cycle to feel seamless at 60fps, without any visual flicker, required precise ordering of style mutations and using `requestAnimationFrame`-like batching.
 
