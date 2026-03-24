@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-critical: #ef4444;
+  --color-critical-light: #fef2f2;
+  --color-high: #f97316;
+  --color-high-light: #fff7ed;
+  --color-medium: #eab308;
+  --color-medium-light: #fefce8;
+  --color-low: #22c55e;
+  --color-low-light: #f0fdf4;
+
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8fafc;
+  --color-surface-alt: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  --color-brand: #6366f1;
+  --color-brand-light: #eef2ff;
+  --color-brand-dark: #4f46e5;
+
+  --color-kanban-todo: #f8fafc;
+  --color-kanban-progress: #eff6ff;
+  --color-kanban-review: #faf5ff;
+  --color-kanban-done: #f0fdf4;
+
+  --color-drop-highlight: #e0e7ff;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: var(--color-text-primary);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+@layer utilities {
+  .drag-ghost {
+    opacity: 0.85;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: rotate(2deg) scale(1.02);
+    pointer-events: none;
+    z-index: 9999;
+    position: fixed;
+    transition: none;
+  }
+
+  .drag-placeholder {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    background: #f1f5f9;
+    transition: height 0.2s ease;
+  }
+
+  .drop-zone-active {
+    background-color: var(--color-drop-highlight) !important;
+    border: 2px dashed var(--color-brand) !important;
+  }
+
+  .snap-back {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s ease;
+  }
+
+  .avatar-enter {
+    animation: avatarFadeIn 0.3s ease forwards;
+  }
+
+  .avatar-exit {
+    animation: avatarFadeOut 0.3s ease forwards;
+  }
+}
+
+@keyframes avatarFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes avatarFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
